@@ -1,0 +1,62 @@
+[
+    {
+        "gender": "female",
+        "name": {
+            "title": "Mrs",
+            "first": "Elizabeth",
+            "last": "Ambrose"
+        },
+        "location": {
+            "street": {
+                "number": 4954,
+                "name": "Tecumseh Rd"
+            },
+            "country": "Canada"
+        },
+        "email": "elizabeth.ambrose@example.com",                            
+        "phone": "366-033-8063",
+        "picture": {
+            "medium": "https://randomuser.me/api/portraits/med/women/49.jpg"
+        }
+    },
+    {
+        "gender": "male",
+        "name": {
+            "title": "Mr",
+            "first": "Batista",
+            "last": "Silveira"
+        },
+        "location": {
+            "street": {
+                "number": 5421,
+                "name": "Railroad St"
+            },
+            "country": "Brazil"
+        },
+        "email": "batista@gmail.com",                            
+        "phone": "(53) 5553-2892",
+        "picture": {
+            "medium": "https://randomuser.me/api/portraits/med/men/50.jpg"
+        }
+    },
+    {
+        "gender": "male",
+        "name": {
+            "title": "Mr",
+            "first": "Blaise",
+            "last": "Adam"
+        },
+        "location": {
+            "street": {
+                "number": 3056,
+                "name": "Rue de la Baleine"
+            },
+            "country": "Switzerland"
+        },
+        "email": "blaise.adam@example.com",
+        "phone": "079 493 00 77", 
+        "picture": {
+            "medium": "https://randomuser.me/api/portraits/med/men/29.jpg"
+        }
+    }
+]

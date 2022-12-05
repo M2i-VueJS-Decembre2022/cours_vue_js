@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Découverte 6</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        .vert{
+            color: green
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <p>Quels langages de prog connaissez-vous ?</p>
+        <input type="text" v-model="unLang" @keyup.enter="ajouter" />
+        <input type="button" value="Valider" @click="ajouter" />
+
+        <ul>
+            <li v-for="langage in langages">
+                <input type="checkbox" v-model="langage.etatCase" /> 
+                <span :class="{vert:langage.etatCase && langage.lang == 'javascript'}">
+                    Le texte {{ langage.lang }} 
+                    <span v-if="langage.etatCase && langage.lang == 'javascript'">est coché, mon langage préféré !</span>
+                    <span v-else-if="langage.etatCase">est coché</span>
+                    <span v-else>est décoché</span>
+                </span>
+            </li>
+        </ul>
+
+    </div>
+
+    <script>
+        app = Vue.createApp({
+
+            data(){
+                return{
+
+                    unLang: '',
+                    langages: []
+
+                }
+            },
+            methods:{
+                ajouter(){
+                    this.langages.push({
+                        lang: this.unLang,
+                        etatCase: false
+                    })
+                    this.unLang = ''
+                }
+            }
+
+        });
+        app.mount("#app");
+    </script>
+
+</body>
+
+</html>

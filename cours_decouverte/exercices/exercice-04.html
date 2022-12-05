@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Découverte 1</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <select v-model="choix">
+            <option>coucou</option>
+            <option value="click">Clic</option>
+            <option value="dblclick">Double clic</option>
+        </select><br/><br/>
+        <img src="https://cdn.pixabay.com/photo/2022/12/03/15/59/pear-7632986_960_720.jpg" v-bind:width="width" @[choix]="updateWidth" />
+    </div>
+
+    <script>
+        app = Vue.createApp({
+
+            data(){
+                return{
+                    width: 500,
+                    choix: 'coucou'
+                }
+            },
+            methods:{
+                updateWidth(){
+                    this.width = 300
+                }
+            }
+
+        });
+        app.mount("#app");
+    </script>
+
+</body>
+
+</html>

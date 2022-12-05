@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 1</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <p>Il est précisément {{ dateFr }} (affichage FR)</p>
+        <p>Il est précisément {{ dateUs }} (affichage US)</p>
+    </div>
+
+    <script>
+        app = Vue.createApp({
+
+            data(){
+                return{
+
+                    d: new Date()
+
+                }
+            },
+            computed: {
+
+                dateFr(){
+                    return this.d.toLocaleTimeString('fr-FR')
+                },
+                
+                dateUs(){
+                    return this.d.toLocaleTimeString('en-US')
+                }
+
+            }
+
+        });
+        app.mount("#app");
+    </script>
+
+</body>
+
+</html>

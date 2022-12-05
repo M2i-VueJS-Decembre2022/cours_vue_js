@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Découverte 1</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <button @click="counter1++">Computed compteur</button> --- {{ counter1}}<br/><br/>
+        <button @click="counter2++">Methods compteur</button> --- {{ counter2}}<br/><br/>
+
+        {{ afficherCompteur }}
+        {{ afficherCompteur2() }}
+
+    </div>
+
+    <script>
+        app = Vue.createApp({
+
+            data(){
+                return{
+                    counter1: 0,
+                    counter2: 0
+                }
+            },
+            computed: {
+
+                afficherCompteur(){
+                    console.log("Je suis la computed : " + this.counter1)
+                }
+
+            },
+
+            methods: {
+                afficherCompteur2(){
+                    console.log("Je suis la methods : " + this.counter2)
+                }
+            }
+
+        });
+        app.mount("#app");
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Découverte 5</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <button @click.once="action">Cliquez ici</button>
+        <img src="https://cdn.pixabay.com/photo/2022/12/03/15/59/pear-7632986_960_720.jpg" @mousemove="getCoords" />
+        <div>Cordoonées x et y : {{ xy }}</div>
+    </div>
+
+    <script>
+        app = Vue.createApp({
+
+            data(){
+                return{
+                    xy: ''
+                }
+            },
+            methods: {
+                getCoords(event){
+                    this.xy = "x : " + event.offsetX + ', y : ' + event.offsetY
+                },
+                action(){
+                    console.log("Je suis cliqué !")
+                }
+            }
+
+        });
+        app.mount("#app");
+    </script>
+
+</body>
+
+</html>

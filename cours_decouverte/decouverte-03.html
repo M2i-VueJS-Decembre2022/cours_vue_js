@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Découverte 1</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <p v-html="presentationHTML"></p>
+        <p>Ici c'est <span v-text="personne.prenom"></span>, j'ai <span>{{ personne.age }} ans</span></p>
+        <img :src="url" style="width: 200px;" />
+    </div>
+
+    <script>
+        app = Vue.createApp({
+
+            data(){
+                return{
+                    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1184px-Vue.js_Logo_2.svg.png",
+                    presentationHTML: "Salut c'est <strong>Alan</strong>",
+                    personne: {
+                        prenom: "Alan",
+                        nom: "PL",
+                        age: 31
+                    }
+                }
+            }
+
+        });
+        const appVue = app.mount("#app");
+        appVue.personne.prenom = "John"
+    </script>
+
+</body>
+
+</html>

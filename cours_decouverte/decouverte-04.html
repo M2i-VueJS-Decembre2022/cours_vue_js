@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Découverte 1</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <input type="text" placeholder="Votre nom" v-model="nom" /><br/><br/>
+
+        <textarea v-model="unTexte" cols="40" rows="7"></textarea><br/><br/>
+
+        <input type="checkbox" v-model="isChecked" /><br/><br/>
+
+        <select v-model="optionSelected">
+            <option>Paris</option>
+            <option>Bordeaux</option>
+            <option>Le Mans</option>
+        </select><br/><br/>
+
+        Bonjour {{ nom }} - vous avez sélectionné {{ optionSelected }}
+
+        <p style="white-space: pre-line">{{ unTexte }}</p>
+    </div>
+
+    <script>
+        app = Vue.createApp({
+
+            data(){
+                return{
+                    nom: 'Alan',
+                    unTexte:"",
+                    isChecked: true,
+                    optionSelected: ''
+                }
+            }
+
+        });
+        app.mount("#app");
+    </script>
+
+</body>
+
+</html>

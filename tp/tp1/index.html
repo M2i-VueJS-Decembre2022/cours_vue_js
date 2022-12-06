@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 1</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <style>
+        .miseEnForme{
+            background-color: #eeeeee;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <section style="margin-bottom: 10px;">
+        
+            <p>Filtre par le prénom</p>
+            <input type="text" v-model="filtrePrenom" />
+
+        </section>
+
+        <section style="border: 1px solid black; padding: 5px">
+        
+            <p>Options</p>
+            Homme <input type="checkbox" v-model="filtreHomme" />
+            Femme <input type="checkbox" v-model="filtreFemme" />
+            Téléphone <input type="checkbox" v-model="filtreTelephone" />
+            Mise en forme <input type="checkbox" v-model="filtreMiseEnForme" />
+        
+        </section>
+
+        <div v-for="personne in personnes" style="border: 1px dashed black;margin:20px 0px">
+
+            <div v-if="((filtreHomme && personne.gender == 'male') || (filtreFemme && personne.gender == 'female')) && personne.name.first.toLowerCase().indexOf(filtrePrenom.toLowerCase()) != -1" style="display: flex; align-items: center;">
+                <div style="margin-right: 10px;"><img :src="personne.picture.medium" /></div>
+                <div :class="{miseEnForme:filtreMiseEnForme}">
+                    <p>{{ personne.name.title }} {{ personne.name.first }} {{ personne.name.last }}</p>
+                    <p v-if="filtreTelephone">Téléphone : {{ personne.phone }}</p>
+                    <p>Pays : {{ personne.location.country }}</p>
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <script>
+        app = Vue.createApp({
+
+            data() {
+                return {
+
+                    filtreHomme: true,
+                    filtreFemme: true,
+                    filtreTelephone: false,
+                    filtreMiseEnForme: false,
+                    filtrePrenom: '',
+                    personnes: [
+                        {
+                            "gender": "female",
+                            "name": {
+                                "title": "Mrs",
+                                "first": "Elizabeth",
+                                "last": "Ambrose"
+                            },
+                            "location": {
+                                "street": {
+                                    "number": 4954,
+                                    "name": "Tecumseh Rd"
+                                },
+                                "country": "Canada"
+                            },
+                            "email": "elizabeth.ambrose@example.com",
+                            "phone": "366-033-8063",
+                            "picture": {
+                                "medium": "https://randomuser.me/api/portraits/med/women/49.jpg"
+                            }
+                        },
+                        {
+                            "gender": "male",
+                            "name": {
+                                "title": "Mr",
+                                "first": "Batista",
+                                "last": "Silveira"
+                            },
+                            "location": {
+                                "street": {
+                                    "number": 5421,
+                                    "name": "Railroad St"
+                                },
+                                "country": "Brazil"
+                            },
+                            "email": "batista@gmail.com",
+                            "phone": "(53) 5553-2892",
+                            "picture": {
+                                "medium": "https://randomuser.me/api/portraits/med/men/50.jpg"
+                            }
+                        },
+                        {
+                            "gender": "male",
+                            "name": {
+                                "title": "Mr",
+                                "first": "Blaise",
+                                "last": "Adam"
+                            },
+                            "location": {
+                                "street": {
+                                    "number": 3056,
+                                    "name": "Rue de la Baleine"
+                                },
+                                "country": "Switzerland"
+                            },
+                            "email": "blaise.adam@example.com",
+                            "phone": "079 493 00 77",
+                            "picture": {
+                                "medium": "https://randomuser.me/api/portraits/med/men/29.jpg"
+                            }
+                        }
+                    ]
+
+                }
+            }
+
+        });
+        app.mount("#app");
+    </script>
+
+</body>
+
+</html>

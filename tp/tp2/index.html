@@ -21,12 +21,21 @@
 <body>
 
     <div id="app">
+
         <liste-memes :liste_memes="memes" :nb_memes="nbMemes" :voir_nom_meme="voirNomMeme">
+            
             <template v-slot:button>
-                <button type="button" @click="voirNomMeme=!voirNomMeme" style="margin-bottom: 50px;">
+                <button type="button" @click="voirNomMeme=!voirNomMeme" class="mb-5 btn btn-primary">
                     {{ voirNomMeme ? 'Cacher' : 'Afficher' }} les noms des memes
                 </button>
             </template>
+
+            <template v-slot:nom_meme="slotMeme">
+                <transition enter-active-class="animate__animated animate__bounceInLeft" leave-active-class="animate__animated animate__bounceOutRight">
+                    <h5 v-if="voirNomMeme" class="card-title">{{ slotMeme.numero_meme + 1}} - {{ slotMeme.nom_meme }}</h5>
+                </transition>
+            </template>
+
         </liste-memes>
     </div>
 
@@ -44,7 +53,7 @@
 
                     memes: [],
                     voirNomMeme:false,
-                    nbMemes: 10
+                    nbMemes: 30
                     
                 }
             },

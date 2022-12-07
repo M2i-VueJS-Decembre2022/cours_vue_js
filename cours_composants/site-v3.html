@@ -34,8 +34,12 @@
         <menu-site></menu-site>
         <liste-jeux titre="Nos derniers jeux" :listjeux="jeux" @checkdispo="checkDisponibilite">
 
-            <template v-slot="jeuSlotName">
-                <i>{{ jeuSlotName.jeu.nom }}</i>
+            <template v-slot:jeunom="slotProps">
+                <i>{{ slotProps.nomjeu }}</i>
+            </template>
+
+            <template v-slot:jeudesc="slotProps">
+                <b>{{ slotProps.descjeu }}</b>
             </template>
 
             <template v-slot:presentation>

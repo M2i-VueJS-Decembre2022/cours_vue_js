@@ -5,6 +5,7 @@
 
 <script>
 import InscritsList from '@/components/InscritsList'
+import axios from 'axios'
 
 export default{
     name:'InscritsListView',
@@ -13,27 +14,17 @@ export default{
     },
     data(){
         return{
-            personnes: [
-                {
-                    id: 1,
-                    nom:"Jackson",
-                    prenom:"Michael",
-                    age:41
-                },
-                {
-                    id: 2,
-                    nom:"Hendrix",
-                    prenom:"Jimmy",
-                    age:27
-                },
-                {
-                    id: 3,
-                    nom:"Mandela",
-                    prenom:"Nelson",
-                    age:80
-                }
-            ]
+            personnes: []
         }
+    },
+    methods:{
+        async fetchUsers(){
+            const userResponse = await axios.get('https://randomuser.me/api/?results=3');
+            this.personnes = userResponse.data.results;
+        }
+    },
+    mounted(){
+        this.fetchUsers();
     }
 }
 
